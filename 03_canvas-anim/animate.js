@@ -13,7 +13,8 @@ var ctx = c.getContext("2d");
 var radius = 0;
 var state = "grow" //will be grow, shrink, or stop
 var id;
-ctx.fillStyle = 'blue'
+var touched = false
+ctx.fillStyle = '#c4ebff'
 
 // Clear the canvas
 var clear = function(e){
@@ -24,13 +25,20 @@ var clear = function(e){
 
 
 circle.addEventListener('click', function(e) { //grow or shrink
-  state = "grow"
-  animate();
+  if (!touched){
+      state = "grow"
+      animate();
+      touched = true
+  }
+  else{
+    touched = true
+  }
 });
 
 stop.addEventListener('click', function(e) { //state turns to stop
   state = "stop"
   animate();
+  touched = false
 });
 
 //animation function
@@ -55,12 +63,14 @@ function animate()
     }
   }
   else {
+    ctx.fillStyle = "#c4ebff"
     ctx.beginPath()
     ctx.ellipse(c.width/2, c.height/2, radius, radius, 0, 0, 2 * Math.PI)
     ctx.closePath()
     ctx.fill()
     return; //makes sure the circle doesn't disappear after stop is pressed
   }
+  ctx.fillStyle = "#c4ebff"
 	ctx.beginPath()
   ctx.ellipse(c.width/2, c.height/2, radius, radius, 0, 0, 2 * Math.PI)
   ctx.stroke()
