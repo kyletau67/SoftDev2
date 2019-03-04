@@ -7,7 +7,7 @@
 Dataset: Pokedex (Pokemon GO Pokedex)
 Contents: This dataset contains all the information about Gen 1 Pokemon from the Pokemon GO game including ID number, physical stats, spawn chances, and weaknesses.
 Link: https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json
-Import mechanism: mongoimport --db GoodEeevening --collection poke --jsonArray --file ~/softDev2/07_mongo/pokemon.json
+Import mechanism: mongoimport --db GoodEeevening --collection poke --jsonArray --file <path>/<to>/pokemon.json
     **Create database GoodEeevening with collection poke importing from the pokemon.json file**
 '''
 
