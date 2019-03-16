@@ -16,26 +16,22 @@ var makeCircle = function(e) {
   c1.setAttribute("cy", y);
   c1.setAttribute("r", 10);
   c1.setAttribute("fill", "blue");
-  c1.addEventListener("click", clicked)
+  c1.addEventListener("click", function(e) {
+    //change color
+    if (this.getAttribute("fill")=="blue") {
+      this.setAttribute("fill", "green");
+    }
+    //change coordinates
+    else {
+      c1.setAttribute("cx", Math.floor(Math.random() * pic.getAttribute("width")));
+      c1.setAttribute("cy", Math.floor(Math.random() * pic.getAttribute("height")));
+      c1.setAttribute("fill", "blue");
+    }
+    e.stopPropagation();
+  });
   pic.appendChild(c1);
 };
 
-//ask Circle
-var clicked = function() {
-  console.log(this);
- if (this.style.fill == "blue") {
-    console.log("hi");
-    this.setAttribute("fill", "green");
-    console.log(this);
-  }
-//  else {
-//    move();
-//  }
-}
-
-//var move() = function() {
-
-//}
 //function to clear svg
 var clearPic = function() {
   pic.innerHTML=''
